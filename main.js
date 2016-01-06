@@ -2,7 +2,7 @@ var https = require('https');
 
 var OAuth= require('oauth').OAuth;
 var keys = require('./twitterkeys');
-var myself = "799993741"; // EtienneNoiret
+var myself = "0123456"; // Your twitter id
 var twitterer = new OAuth(
 		   "https://api.twitter.com/oauth/request_token",
 		   "https://api.twitter.com/oauth/access_token",
@@ -22,17 +22,6 @@ twitterer.get("https://api.twitter.com/1.1/friends/ids.json?user_id="+myself+"&c
       console.log('Error: Something is wrong.\n'+JSON.stringify(error)+'\n');
     } else {
       var ids = JSON.parse(data).ids; // array of ids
-      //console.log(ids);
-      /*var random = new Date().getTime()%2;
-      if(random==0) {
-        for(i in ids) {
-          checkFriendship(myself, ids[i]);
-        }
-      } else { // start from end to start, in order to avoid Twitter rate limits always on same users
-        for(i=ids.length-1; i>=0; i--) {
-          checkFriendship(myself, ids[i]);
-        }
-      }*/
       var delay = 10*1000; // 10 seconds
       for(i in ids) {
         delayCheckFriendship(myself, ids[i], delay*i); // 1 call every 10 seconds to avoid twitter API rate limit...
