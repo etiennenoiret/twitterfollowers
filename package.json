@@ -1,0 +1,9 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "Check who doesn't follow you back",
+  "main": "main.js",
+  "dependencies": {
+    "oauth": "x.x"
+  }
+}
